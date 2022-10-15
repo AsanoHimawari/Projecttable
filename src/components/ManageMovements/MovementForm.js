@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: "600",
     color: "#7D5846",
-    marginVertical:16,
+    marginVertical: 16,
     textAlign: "center",
   },
   inputRow: {
