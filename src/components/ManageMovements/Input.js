@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   invalidInput: {
-    backgroundColor: "#5c6bc0",
+    backgroundColor: "#D96666",
   },
 });
 

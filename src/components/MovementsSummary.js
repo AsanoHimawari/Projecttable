@@ -11,12 +11,14 @@ const MovementsSummary = ({ data, period }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#aab6fe",
+    backgroundColor: "#BB8D76",
     padding: 8,
     borderRadius: 6,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    
+  
   },
   period: {
     fontSize: 18,
@@ -24,6 +26,7 @@ const styles = StyleSheet.create({
   sum: {
     fontSize: 16,
     fontWeight: "bold",
+    color: "#7D5846",
   },
 });
 

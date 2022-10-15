@@ -28,9 +28,11 @@ const MovementsList = ({ data }) => {
             onPress={() => navigation.navigate("Manage", { movId: item.id })}
           >
             <View style={styles.movement}>
-              <View>
-                <Text style={styles.Subject}>{item.Subject}</Text>
-                <Text>{getFormatDate(item.date)}</Text>
+              <View style={styles.CourseNumContainer}>
+               <Text style={styles.datelist}>{getFormatDate(item.date)}</Text> 
+              </View>
+              <View style={styles.CourseNumContainer}>
+              <Text style={styles.Subject}>{item.Subject}</Text>
               </View>
               <View style={styles.CourseNumContainer}>
                 <Text style={styles.CourseNum}>{item.CourseNum}</Text>
@@ -46,13 +48,13 @@ const MovementsList = ({ data }) => {
 const styles = StyleSheet.create({
   movement: {
     flexDirection: "row",
-    backgroundColor: "#49599a",
+    backgroundColor: "#DECDC5",
     padding: 12,
     marginVertical: 6,
     elevation: 3,
     justifyContent: "space-between",
     borderRadius: 6,
-    shadowColor: "#001064",
+    shadowColor: "#BB8D76",
     shadowRadius: 4,
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.4,
@@ -68,21 +70,26 @@ const styles = StyleSheet.create({
   Subject: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#fff",
+    color: "#7D5846",
   },
   CourseNumContainer: {
-    backgroundColor: "#aab6fe",
+    // backgroundColor: "#BB8D76",
     paddingHorizontal: 12,
     paddingVertical: 4,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 4,
     minWidth: 80,
+    // borderBottomEndRadius: "#7D5846",
   },
   CourseNum: {
     fontWeight: "bold",
-    color: "#fff",
+    color: "#7D5846",
   },
+  datelist:{
+    fontWeight: "bold",
+    color: "#7D5846",
+  }
 });
 
 export default MovementsList;

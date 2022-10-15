@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 4,
     padding: 8,
-    backgroundColor: "#c2217c",
+    backgroundColor: "#7D5846",
   },
   buttonText: {
     color: "#fff",
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
   },
   flatText: {
-    color: "#00227b",
+    color: "#7D5846",
   },
 });
 

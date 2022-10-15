@@ -18,14 +18,16 @@ import MovementsContextProvider from "./src/store/movements-context";
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
 
+// #DECDC5 #F0E9E3 #C8B0A4 #BB8D76 #7D5846
+
 const MovementsOverview = () => {
   return (
     <BottomTabs.Navigator
       screenOptions={({ navigation }) => ({
-        headerStyle: { backgroundColor: "#3f51b5" },
-        headerTintColor: "#fff",
-        tabBarStyle: { backgroundColor: "#3f51b5" },
-        tabBarActiveTintColor: "#fff",
+        headerStyle: { backgroundColor: "#7D5846" },
+        headerTintColor: "#F0E9E3",
+        tabBarStyle: { backgroundColor: "#7D5846" },
+        tabBarActiveTintColor: "#DECDC5",
         headerRight: ({ tintColor }) => (
           <IconButton
             name="add"
@@ -78,9 +80,9 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
-              headerStyle: { backgroundColor: "#3f51b5" },
-              headerTintColor: "#fff",
-              tabBarStyle: { backgroundColor: "#3f51b5" },
+              headerStyle: { backgroundColor: "#7D5846" },
+              headerTintColor: "#F0E9E3",
+              tabBarStyle: { backgroundColor: "#F0E9E3" },
             }}
           >
             <Stack.Screen

@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: "bold",
-    color: "#000000",
+    color: "#7D5846",
     marginVertical: 24,
     textAlign: "center",
   },
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
   errorText: {
     textAlign: "center",
     margin: 8,
-    color: "#db092f",
+    color: "#D96666",
   },
 });
 
