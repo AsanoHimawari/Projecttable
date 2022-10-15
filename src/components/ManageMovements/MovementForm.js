@@ -101,6 +101,7 @@ const MovementForm = ({
             invalid={!input.CourseNum.isValid}
             textInputConfig={{
               keyboardType: "decimal-pad",
+              placeholder: "รหัสวิชา",
               onChangeText: inputChangeHandler.bind(this, "CourseNum"),
               value: input.CourseNum.value,
             }}
@@ -123,6 +124,7 @@ const MovementForm = ({
           invalid={!input.Subject.isValid}
           textInputConfig={{
             multiline: true,
+            placeholder: "รายวิชา",
             value: input.CourseNum.value,
             onChangeText: inputChangeHandler.bind(this, "Subject"),
             value: input.Subject.value,
@@ -133,6 +135,7 @@ const MovementForm = ({
           invalid={!input.Times.isValid}
           textInputConfig={{
             multiline: true,
+            placeholder: "00.00",
             value: input.CourseNum.value,
             onChangeText: inputChangeHandler.bind(this, "Times"),
             value: input.Times.value,
