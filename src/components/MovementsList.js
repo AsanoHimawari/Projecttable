@@ -14,7 +14,7 @@ import ManageMovement from "../screens/ManageMovement";
 import { getFormatDate } from "../utility/date";
 
 const MovementsList = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   const navigation = useNavigation();
   return (
     <FlatList
@@ -28,7 +28,6 @@ const MovementsList = ({ data }) => {
             onPress={() => navigation.navigate("Manage", { movId: item.id })}
           >
             <View style={styles.movement}>
-              
               <View style={styles.CourseNumContainer}>
                 <Text style={styles.CourseNum}>{item.CourseNum}</Text>
               </View>
@@ -69,7 +68,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     alignItems: "center",
     justifyContent: "center",
-    
+
     minWidth: 80,
     // borderBottomEndRadius: "#7D5846",
   },
@@ -93,7 +92,6 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#7D5846",
   },
-
 });
 
 export default MovementsList;
