@@ -156,13 +156,13 @@ const MovementForm = ({
 
 const styles = StyleSheet.create({
   form: {
-    marginTop: 5,
+    marginTop: 0,
   },
   title: {
-    fontSize: 30,
-    fontWeight: "bold",
+    fontSize: 26,
+    fontWeight: "600",
     color: "#7D5846",
-    marginVertical: 24,
+    marginVertical:16,
     textAlign: "center",
   },
   inputRow: {

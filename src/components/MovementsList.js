@@ -28,16 +28,17 @@ const MovementsList = ({ data }) => {
             onPress={() => navigation.navigate("Manage", { movId: item.id })}
           >
             <View style={styles.movement}>
+              
               <View style={styles.CourseNumContainer}>
-                <Text style={styles.datelist}>{getFormatDate(item.date)}</Text>
+                <Text style={styles.CourseNum}>{item.CourseNum}</Text>
               </View>
               <View style={styles.CourseNumContainer}>
                 <Text style={styles.Subject}>{item.Subject}</Text>
               </View>
               <View style={styles.CourseNumContainer}>
-                <Text style={styles.CourseNum}>{item.CourseNum}</Text>
+                <Text style={styles.datelist}>{getFormatDate(item.date)}</Text>
               </View>
-              <View style={styles.TimesContainer}>
+              <View style={styles.CourseNumContainer}>
                 <Text style={styles.Times}>{item.Times}</Text>
               </View>
             </View>
@@ -56,24 +57,11 @@ const styles = StyleSheet.create({
     marginVertical: 6,
     elevation: 3,
     justifyContent: "space-between",
-    borderRadius: 6,
+    borderRadius: 16,
     shadowColor: "#BB8D76",
     shadowRadius: 4,
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.4,
-  },
-  // container: {
-  //   backgroundColor: "#aab6fe",
-  //   padding: 8,
-  //   borderRadius: 6,
-  //   flexDirection: "row",
-  //   justifyContent: "space-between",
-  //   alignItems: "center",
-  // },
-  Subject: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#7D5846",
   },
   CourseNumContainer: {
     // backgroundColor: "#BB8D76",
@@ -81,18 +69,31 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 4,
+    
     minWidth: 80,
     // borderBottomEndRadius: "#7D5846",
   },
+  Subject: {
+    fontSize: 15,
+    fontWeight: "400",
+    color: "#7D5846",
+  },
   CourseNum: {
-    fontWeight: "bold",
+    fontSize: 15,
+    fontWeight: "400",
     color: "#7D5846",
   },
   datelist: {
-    fontWeight: "bold",
+    fontSize: 15,
+    fontWeight: "400",
     color: "#7D5846",
   },
+  Times: {
+    fontSize: 15,
+    fontWeight: "400",
+    color: "#7D5846",
+  },
+
 });
 
 export default MovementsList;

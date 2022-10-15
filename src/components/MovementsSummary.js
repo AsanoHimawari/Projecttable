@@ -1,31 +1,31 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const MovementsSummary = ({ data, period }) => {
+const MovementsSummary = ({ data,}) => {
   // console.log(data);
   return (
-    <View style={styles.container}>
-      <Text style={styles.sum}>Now have {data.length} Subjects........</Text>
+    <View>
+      <Text style={styles.sum}>Now have {data.length} Subjects</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#BB8D76",
-    padding: 8,
-    borderRadius: 6,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  period: {
-    fontSize: 18,
-  },
+  // container: {
+  //   backgroundColor: "#BB8D76",
+  //   padding: 8,
+  //   borderRadius: 6,
+  //   flexDirection: "column",
+  //   justifyContent: "flex-end",
+  //   alignItems: "center",
+  // },
   sum: {
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: 15,
+    fontWeight: "500",
     color: "#7D5846",
+    alignItems: "center",
+    textDecorationLine: 'underline',
+    
   },
 });
 
