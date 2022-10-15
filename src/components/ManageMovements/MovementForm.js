@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Alert } from "react-native";
+import { View, Text, StyleSheet, Alert, ScrollView } from "react-native";
 import Input from "./Input";
 import Button from "../Ui/Button";
 import { getFormatDate } from "../../utility/date";
@@ -92,64 +92,66 @@ const MovementForm = ({
 
   return (
     <View style={styles.form}>
-      <Text style={styles.title}>ตารางสอบ</Text>
-      <View style={styles.inputRow}>
+      <ScrollView style={styles.scrollView}>
+        <Text style={styles.title}>ตารางสอบ</Text>
+        <View style={styles.inputRow}>
+          <Input
+            style={styles.rowInput}
+            label="Course Number"
+            invalid={!input.CourseNum.isValid}
+            textInputConfig={{
+              keyboardType: "decimal-pad",
+              onChangeText: inputChangeHandler.bind(this, "CourseNum"),
+              value: input.CourseNum.value,
+            }}
+          />
+          <Input
+            style={styles.rowInput}
+            label="Date"
+            invalid={!input.date.isValid}
+            textInputConfig={{
+              keyboardType: "decimal-pad",
+              placeholder: "YYYY-MM-DD",
+              maxLength: 10,
+              onChangeText: inputChangeHandler.bind(this, "date"),
+              value: input.date.value,
+            }}
+          />
+        </View>
         <Input
-          style={styles.rowInput}
-          label="Course Number"
-          invalid={!input.CourseNum.isValid}
+          label="Subject"
+          invalid={!input.Subject.isValid}
           textInputConfig={{
-            keyboardType: "decimal-pad",
-            onChangeText: inputChangeHandler.bind(this, "CourseNum"),
+            multiline: true,
             value: input.CourseNum.value,
+            onChangeText: inputChangeHandler.bind(this, "Subject"),
+            value: input.Subject.value,
           }}
         />
         <Input
-          style={styles.rowInput}
-          label="Date"
-          invalid={!input.date.isValid}
+          label="Time"
+          invalid={!input.Times.isValid}
           textInputConfig={{
-            keyboardType: "decimal-pad",
-            placeholder: "YYYY-MM-DD",
-            maxLength: 10,
-            onChangeText: inputChangeHandler.bind(this, "date"),
-            value: input.date.value,
+            multiline: true,
+            value: input.CourseNum.value,
+            onChangeText: inputChangeHandler.bind(this, "Times"),
+            value: input.Times.value,
           }}
         />
-      </View>
-      <Input
-        label="Subject"
-        invalid={!input.Subject.isValid}
-        textInputConfig={{
-          multiline: true,
-          value: input.CourseNum.value,
-          onChangeText: inputChangeHandler.bind(this, "Subject"),
-          value: input.Subject.value,
-        }}
-      />
-      <Input
-        label="Time"
-        invalid={!input.Times.isValid}
-        textInputConfig={{
-          multiline: true,
-          value: input.CourseNum.value,
-          onChangeText: inputChangeHandler.bind(this, "Times"),
-          value: input.Times.value,
-        }}
-      />
-      {formIsInValid && (
-        <Text style={styles.errorText}>
-          Invalid input values : please check your entered Data!
-        </Text>
-      )}
-      <View style={styles.buttons}>
-        <Button style={styles.button} mode="flat" onPress={onCancel}>
-          Cancel
-        </Button>
-        <Button style={styles.button} onPress={submitHandler}>
-          {submitButtonLabel}
-        </Button>
-      </View>
+        {formIsInValid && (
+          <Text style={styles.errorText}>
+            Invalid input values : please check your entered Data!
+          </Text>
+        )}
+        <View style={styles.buttons}>
+          <Button style={styles.button} mode="flat" onPress={onCancel}>
+            Cancel
+          </Button>
+          <Button style={styles.button} onPress={submitHandler}>
+            {submitButtonLabel}
+          </Button>
+        </View>
+      </ScrollView>
     </View>
   );
 };
