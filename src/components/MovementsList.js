@@ -29,13 +29,16 @@ const MovementsList = ({ data }) => {
           >
             <View style={styles.movement}>
               <View style={styles.CourseNumContainer}>
-               <Text style={styles.datelist}>{getFormatDate(item.date)}</Text> 
+                <Text style={styles.datelist}>{getFormatDate(item.date)}</Text>
               </View>
               <View style={styles.CourseNumContainer}>
-              <Text style={styles.Subject}>{item.Subject}</Text>
+                <Text style={styles.Subject}>{item.Subject}</Text>
               </View>
               <View style={styles.CourseNumContainer}>
                 <Text style={styles.CourseNum}>{item.CourseNum}</Text>
+              </View>
+              <View style={styles.TimesContainer}>
+                <Text style={styles.Times}>{item.Times}</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -86,10 +89,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#7D5846",
   },
-  datelist:{
+  datelist: {
     fontWeight: "bold",
     color: "#7D5846",
-  }
+  },
 });
 
 export default MovementsList;

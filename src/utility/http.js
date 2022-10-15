@@ -19,6 +19,7 @@ export async function fetchMoveMents() {
       CourseNum: response.data[key].CourseNum,
       date: new Date(response.data[key].date),
       Subject: response.data[key].Subject,
+      Times: response.data[key].Times,
     };
     movements.push(movementobj);
   }

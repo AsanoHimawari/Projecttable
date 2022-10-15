@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 const MovementsSummary = ({ data, period }) => {
+  // console.log(data);
   return (
     <View style={styles.container}>
       <Text style={styles.sum}>Now have {data.length} Subjects........</Text>
@@ -17,8 +18,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    
-  
   },
   period: {
     fontSize: 18,

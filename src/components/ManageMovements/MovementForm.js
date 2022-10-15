@@ -25,6 +25,10 @@ const MovementForm = ({
       value: defaultValues ? defaultValues.Subject : "",
       isValid: true,
     },
+    Times: {
+      value: defaultValues ? defaultValues.Times : "",
+      isValid: true,
+    },
   });
 
   const inputChangeHandler = (inputIdentifier, enterValue) => {
@@ -41,6 +45,7 @@ const MovementForm = ({
       CourseNum: input.CourseNum.value,
       date: new Date(input.date.value),
       Subject: input.Subject.value,
+      Times: input.Times.value,
     };
 
     console.log(tableData);
@@ -52,7 +57,9 @@ const MovementForm = ({
 
     const SubjectIsValid = tableData.Subject.trim().length > 0;
 
-    if (!CourseNumIsValid || !dateIsValid || !SubjectIsValid) {
+    const TimesIsValid = tableData?.Times?.trim().length > 0;
+
+    if (!CourseNumIsValid || !dateIsValid || !SubjectIsValid || !TimesIsValid) {
       // Alert.alert("Invalid Input", "Please correct your input values");
       setInput((curInputs) => {
         return {
@@ -65,6 +72,10 @@ const MovementForm = ({
             value: curInputs.Subject.value,
             isValid: SubjectIsValid,
           },
+          Times: {
+            value: curInputs.Times.value,
+            isValid: TimesIsValid,
+          },
         };
       });
       return;
@@ -74,7 +85,10 @@ const MovementForm = ({
   };
 
   const formIsInValid =
-    !input.CourseNum.isValid || !input.date.isValid || !input.Subject.isValid;
+    !input.CourseNum.isValid ||
+    !input.date.isValid ||
+    !input.Subject.isValid ||
+    !input.Times.isValid;
 
   return (
     <View style={styles.form}>
@@ -111,6 +125,16 @@ const MovementForm = ({
           value: input.CourseNum.value,
           onChangeText: inputChangeHandler.bind(this, "Subject"),
           value: input.Subject.value,
+        }}
+      />
+      <Input
+        label="Time"
+        invalid={!input.Times.isValid}
+        textInputConfig={{
+          multiline: true,
+          value: input.CourseNum.value,
+          onChangeText: inputChangeHandler.bind(this, "Times"),
+          value: input.Times.value,
         }}
       />
       {formIsInValid && (
