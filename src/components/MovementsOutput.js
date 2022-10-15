@@ -8,11 +8,9 @@ import MovementsTable from "./MovementsTable";
 const MovementsOutput = ({ movements, period }) => {
   return (
     <View style={styles.container}>
-
       <MovementsSummary data={movements} period={period} />
-      <MovementsTable data={movements}/>
+      <MovementsTable data={movements} />
       <MovementsList data={movements} />
-      
     </View>
   );
 };

@@ -42,7 +42,7 @@ const MovementsOverview = () => {
         name="Home"
         component={Home}
         options={{
-          title: "Home",
+          title: "Today",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home" size={size} color={color} />
           ),
