@@ -7,16 +7,16 @@ const MovementsTable = () => {
     <View style={styles.containerHead}>
 
       <View style={styles.CourseNumContainer}>
-        <Text style={styles.textHead}>ID</Text>
+        <Text style={styles.textHead}>รหัสวิชา</Text>
       </View>
       <View style={styles.CourseNumContainer}>
-        <Text style={styles.textHead}>Subject</Text>
+        <Text style={styles.textHead}>วิชา</Text>
       </View>
       <View style={styles.CourseNumContainer}>
-        <Text style={styles.textHead}>Date</Text>
+        <Text style={styles.textHead}>วันที่</Text>
       </View>
       <View style={styles.CourseNumContainer}>
-        <Text style={styles.textHead}>Time</Text>
+        <Text style={styles.textHead}>เวลา</Text>
       </View>
 
     </View>

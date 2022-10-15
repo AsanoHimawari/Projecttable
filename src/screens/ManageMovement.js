@@ -57,7 +57,7 @@ const ManageMovement = ({ route, navigation }) => {
       <MovementForm
         onSubmit={confirmHandler}
         onCancel={cancelHandler}
-        submitButtonLabel={isEditting ? "Update" : "Add"}
+        submitButtonLabel={isEditting ? "อัปเดต" : "เพิ่ม"}
         defaultValues={selectedMovement}
       />
       {isEditting && (

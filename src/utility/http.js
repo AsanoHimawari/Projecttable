@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BACKEND_URL =
-  "https://cs-projct-default-rtdb.asia-southeast1.firebasedatabase.app/";
+  "https://rn-proj-4f698-default-rtdb.asia-southeast1.firebasedatabase.app/";
 
 export async function storeMovement(tableData) {
   try {

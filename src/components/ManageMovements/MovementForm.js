@@ -93,11 +93,11 @@ const MovementForm = ({
   return (
     <View style={styles.form}>
       <ScrollView style={styles.scrollView}>
-        <Text style={styles.title}>ตารางสอบ</Text>
+        <Text style={styles.title}>ตารางเรียน</Text>
         <View style={styles.inputRow}>
           <Input
             style={styles.rowInput}
-            label="Course Number"
+            label="รหัสวิชา"
             invalid={!input.CourseNum.isValid}
             textInputConfig={{
               keyboardType: "decimal-pad",
@@ -108,7 +108,7 @@ const MovementForm = ({
           />
           <Input
             style={styles.rowInput}
-            label="Date"
+            label="วันที่"
             invalid={!input.date.isValid}
             textInputConfig={{
               keyboardType: "decimal-pad",
@@ -120,10 +120,10 @@ const MovementForm = ({
           />
         </View>
         <Input
-          label="Subject"
+        style={styles.rowInput}
+          label="วิชา"
           invalid={!input.Subject.isValid}
           textInputConfig={{
-            multiline: true,
             placeholder: "รายวิชา",
             value: input.CourseNum.value,
             onChangeText: inputChangeHandler.bind(this, "Subject"),
@@ -131,10 +131,11 @@ const MovementForm = ({
           }}
         />
         <Input
-          label="Time"
+        style={styles.rowInput}
+          label="เวลาที่เรียน"
           invalid={!input.Times.isValid}
           textInputConfig={{
-            multiline: true,
+            keyboardType: "decimal-pad",
             placeholder: "00.00",
             value: input.CourseNum.value,
             onChangeText: inputChangeHandler.bind(this, "Times"),
@@ -143,12 +144,12 @@ const MovementForm = ({
         />
         {formIsInValid && (
           <Text style={styles.errorText}>
-            Invalid input values : please check your entered Data!
+            กรุณาใส่ข้อมูลให้ถูกต้อง : เช็คข้อมูลของคุณที่กรอก!
           </Text>
         )}
         <View style={styles.buttons}>
           <Button style={styles.button} mode="flat" onPress={onCancel}>
-            Cancel
+            ยกเลิก
           </Button>
           <Button style={styles.button} onPress={submitHandler}>
             {submitButtonLabel}
