@@ -25,6 +25,10 @@ const MovementForm = ({
       value: defaultValues ? defaultValues.Subject : "",
       isValid: true,
     },
+    Times: {
+      value: defaultValues ? defaultValues.Times : "",
+      isValid: true,
+    },
   });
 
   const inputChangeHandler = (inputIdentifier, enterValue) => {
@@ -60,10 +64,17 @@ const MovementForm = ({
             value: curInputs.CourseNum.value,
             isValid: CourseNumIsValid,
           },
-          date: { value: curInputs.date.value, isValid: dateIsValid },
+          date: { 
+            value: curInputs.date.value, 
+            isValid: dateIsValid 
+          },
           Subject: {
             value: curInputs.Subject.value,
             isValid: SubjectIsValid,
+          },
+          Times: {
+            value: curInputs.Times.value,
+            isValid: TimesIsValid,
           },
         };
       });
@@ -74,7 +85,7 @@ const MovementForm = ({
   };
 
   const formIsInValid =
-    !input.CourseNum.isValid || !input.date.isValid || !input.Subject.isValid;
+    !input.CourseNum.isValid || !input.date.isValid || !input.Subject.isValid || !input.Times.isValid;
 
   return (
     <View style={styles.form}>
@@ -111,6 +122,16 @@ const MovementForm = ({
           value: input.CourseNum.value,
           onChangeText: inputChangeHandler.bind(this, "Subject"),
           value: input.Subject.value,
+        }}
+      />
+      <Input
+        label="Time"
+        invalid={!input?.Time?.isValid}
+        textInputConfig={{
+          multiline: true,
+          value: input?.CourseNum?.value,
+          onChangeText: inputChangeHandler.bind(this, "Times"),
+          value: input?.Times?.value,
         }}
       />
       {formIsInValid && (
