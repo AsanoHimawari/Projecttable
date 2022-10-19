@@ -33,7 +33,7 @@ const Home = ({ movements }) => {
     const today = new Date();
     const date7DaysNext = getDateAddDays(today, 2);
 
-    return mov.date >= today && mov.date <= date7DaysNext;
+    return mov.date > today && mov.date <= date7DaysNext;
   });
   return <MovementsOutput movements={recentMovs} period="This week" />;
 };

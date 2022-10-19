@@ -42,7 +42,7 @@ const MovementsOverview = () => {
         name="Home"
         component={Home}
         options={{
-          title: "วิชาเรียนวันนี้",
+          title: "วิชาสอบพรุ่งนี้",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home" size={size} color={color} />
           ),
@@ -52,7 +52,7 @@ const MovementsOverview = () => {
         name="Recent"
         component={RecentMovements}
         options={{
-          title: "วิชาที่เรียนสัปดาห์นี้",
+          title: "วิชาที่สอบสัปดาห์นี้",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="hourglass" size={size} color={color} />
           ),
@@ -62,7 +62,7 @@ const MovementsOverview = () => {
         name="All"
         component={AllMovements}
         options={{
-          title: "วิชาเรียนทั้งหมด",
+          title: "วิชาสอบทั้งหมด",
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="clipboard-list" size={size} color={color} />
           ),

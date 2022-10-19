@@ -93,7 +93,7 @@ const MovementForm = ({
   return (
     <View style={styles.form}>
       <ScrollView style={styles.scrollView}>
-        <Text style={styles.title}>ตารางเรียน</Text>
+        <Text style={styles.title}>ตารางสอบ</Text>
         <View style={styles.inputRow}>
           <Input
             style={styles.rowInput}

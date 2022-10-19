@@ -5,7 +5,7 @@ const MovementsSummary = ({ data,}) => {
   // console.log(data);
   return (
     <View>
-      <Text style={styles.sum}>วิชาเรียนทั้งหมด {data.length} วิชา</Text>
+      <Text style={styles.sum}>วิชาสอบทั้งหมด {data.length} วิชา</Text>
     </View>
   );
 };
