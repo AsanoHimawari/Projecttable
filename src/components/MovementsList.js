@@ -25,10 +25,10 @@ const MovementsList = ({ data }) => {
       renderItem={({ item }) => {
         return (
           <TouchableOpacity
-            onPress={() => navigation.navigate("Manage", { movId: item.id })}
+            // onPress={() => navigation.navigate("Manage", { movId: item.id })}
+            onPress={() => navigation.navigate("detailScreens", { item })}
           >
             <View style={styles.movement}>
-              
               <View style={styles.CourseNumContainer}>
                 <Text style={styles.CourseNum}>{item.CourseNum}</Text>
               </View>
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#DECDC5",
     padding: 12,
     marginVertical: 6,
-    elevation: 3,
+    elevation: 2,
     justifyContent: "space-between",
     borderRadius: 16,
     shadowColor: "#BB8D76",
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     alignItems: "center",
     justifyContent: "center",
-    
+
     minWidth: 80,
     // borderBottomEndRadius: "#7D5846",
   },
@@ -93,7 +93,6 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#7D5846",
   },
-
 });
 
 export default MovementsList;

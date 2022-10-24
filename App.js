@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import IconButton from "./src/components/Ui/IconButton";
 
@@ -12,6 +12,7 @@ import AllMovements from "./src/screens/AllMovements";
 import RecentMovements from "./src/screens/RecentMovements";
 import ManageMovement from "./src/screens/ManageMovement";
 import Home from "./src/screens/Home";
+import detailScreens from "./src/screens/detailScreens";
 
 import MovementsContextProvider from "./src/store/movements-context";
 
@@ -91,6 +92,7 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <Stack.Screen name="Manage" component={ManageMovement} />
+            <Stack.Screen name="detailScreens" component={detailScreens} />
           </Stack.Navigator>
         </NavigationContainer>
       </MovementsContextProvider>

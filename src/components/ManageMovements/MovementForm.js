@@ -29,6 +29,10 @@ const MovementForm = ({
       value: defaultValues ? defaultValues.Times : "",
       isValid: true,
     },
+    description: {
+      value: defaultValues ? defaultValues.description : "",
+      isValid: true,
+    },
   });
 
   const inputChangeHandler = (inputIdentifier, enterValue) => {
@@ -46,20 +50,31 @@ const MovementForm = ({
       date: new Date(input.date.value),
       Subject: input.Subject.value,
       Times: input.Times.value,
+      description: input.description.value,
     };
 
     console.log(tableData);
 
     // console.log(isNaN(tableData.CourseNum));
     const CourseNumIsValid =
-      !isNaN(tableData.CourseNum) && tableData.CourseNum > 0;
+      !isNaN(tableData.CourseNum) &&
+      tableData.CourseNum > 0 &&
+      tableData.CourseNum.length < 9;
     const dateIsValid = tableData.date.toString() !== "Invalid Date";
 
     const SubjectIsValid = tableData.Subject.trim().length > 0;
 
     const TimesIsValid = tableData?.Times?.trim().length > 0;
 
-    if (!CourseNumIsValid || !dateIsValid || !SubjectIsValid || !TimesIsValid) {
+    const descriptionIsValid = tableData?.Times?.trim().length > 0;
+
+    if (
+      !CourseNumIsValid ||
+      !dateIsValid ||
+      !SubjectIsValid ||
+      !TimesIsValid ||
+      !descriptionIsValid
+    ) {
       // Alert.alert("Invalid Input", "Please correct your input values");
       setInput((curInputs) => {
         return {
@@ -76,6 +91,10 @@ const MovementForm = ({
             value: curInputs.Times.value,
             isValid: TimesIsValid,
           },
+          description: {
+            value: curInputs.description.value,
+            isValid: descriptionIsValid,
+          },
         };
       });
       return;
@@ -88,7 +107,8 @@ const MovementForm = ({
     !input.CourseNum.isValid ||
     !input.date.isValid ||
     !input.Subject.isValid ||
-    !input.Times.isValid;
+    !input.Times.isValid ||
+    !input.description.isValid;
 
   return (
     <View style={styles.form}>
@@ -120,31 +140,43 @@ const MovementForm = ({
           />
         </View>
         <Input
-        style={styles.rowInput}
+          style={styles.rowInput}
           label="วิชา"
           invalid={!input.Subject.isValid}
           textInputConfig={{
             placeholder: "รายวิชา",
-            value: input.CourseNum.value,
+            // value: input.CourseNum.value,
             onChangeText: inputChangeHandler.bind(this, "Subject"),
             value: input.Subject.value,
           }}
         />
         <Input
-        style={styles.rowInput}
-          label="เวลาที่เรียน"
+          style={styles.rowInput}
+          label="เวลาที่สอบ"
           invalid={!input.Times.isValid}
           textInputConfig={{
             keyboardType: "decimal-pad",
             placeholder: "00.00",
-            value: input.CourseNum.value,
+            // value: input.CourseNum.value,
             onChangeText: inputChangeHandler.bind(this, "Times"),
             value: input.Times.value,
           }}
         />
+        <Input
+          style={styles.rowInput}
+          label="รายละเอียด"
+          invalid={!input.description.isValid}
+          textInputConfig={{
+            // keyboardType: "decimal-pad",
+            placeholder: "",
+            // value: input.CourseNum.value,
+            onChangeText: inputChangeHandler.bind(this, "description"),
+            value: input.description.value,
+          }}
+        />
         {formIsInValid && (
           <Text style={styles.errorText}>
-            กรุณาใส่ข้อมูลให้ถูกต้อง : เช็คข้อมูลของคุณที่กรอก!
+            กรุณาใส่ข้อมูลให้ถูกต้อง : โปรดเช็คข้อมูลของคุณที่กรอก
           </Text>
         )}
         <View style={styles.buttons}>

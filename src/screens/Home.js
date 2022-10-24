@@ -29,7 +29,7 @@ const Home = ({ movements }) => {
     return <LoadingOverLay />;
   }
 
-  const recentMovs = movementsCtx.movements.filter((mov) => {
+  const recentMovs = movementsCtx?.movements?.filter((mov) => {
     const today = new Date();
     const date7DaysNext = getDateAddDays(today, 2);
 

@@ -17,7 +17,7 @@ const ManageMovement = ({ route, navigation }) => {
   const movId = route.params?.movId;
   const isEditting = !!movId;
 
-  const selectedMovement = movementsCtx.movements.find(
+  const selectedMovement = movementsCtx?.movements?.find(
     (mov) => mov.id == movId
   );
   console.log(selectedMovement);

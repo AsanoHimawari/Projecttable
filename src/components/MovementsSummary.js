@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const MovementsSummary = ({ data,}) => {
+const MovementsSummary = ({ data }) => {
   // console.log(data);
   return (
     <View>
-      <Text style={styles.sum}>วิชาสอบทั้งหมด {data.length} วิชา</Text>
+      <Text style={styles.sum}>วิชาสอบทั้งหมด {data?.length || 0} วิชา</Text>
     </View>
   );
 };
@@ -24,8 +24,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     color: "#7D5846",
     alignItems: "center",
-    textDecorationLine: 'underline',
-    
+    textDecorationLine: "underline",
   },
 });
 
