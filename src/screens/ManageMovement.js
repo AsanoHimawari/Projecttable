@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    backgroundColor: "#C8B0A4",
+    backgroundColor: "#baa6a9",
   },
 
   deleteContainer: {
