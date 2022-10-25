@@ -172,7 +172,7 @@ const MovementForm = ({
           invalid={!input.NumClass.isValid}
           textInputConfig={{
             keyboardType: "decimal-pad",
-            placeholder: "00.00000",
+            placeholder: "00.00",
             // value: input.CourseNum.value,
             onChangeText: inputChangeHandler.bind(this, "NumClass"),
             value: input.NumClass.value,
@@ -184,7 +184,7 @@ const MovementForm = ({
           invalid={!input.Times.isValid}
           textInputConfig={{
             keyboardType: "decimal-pad",
-            placeholder: "00.00",
+            placeholder: "000",
             // value: input.CourseNum.value,
             onChangeText: inputChangeHandler.bind(this, "Times"),
             value: input.Times.value,
