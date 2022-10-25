@@ -172,7 +172,7 @@ const MovementForm = ({
           invalid={!input.NumClass.isValid}
           textInputConfig={{
             keyboardType: "decimal-pad",
-            placeholder: "000",
+            placeholder: "00.00000",
             // value: input.CourseNum.value,
             onChangeText: inputChangeHandler.bind(this, "NumClass"),
             value: input.NumClass.value,
