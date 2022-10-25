@@ -5,7 +5,6 @@ const MovementsTable = () => {
   // console.log(data);
   return (
     <View style={styles.containerHead}>
-
       <View style={styles.CourseNumContainer}>
         <Text style={styles.textHead}>รหัสวิชา</Text>
       </View>
@@ -18,7 +17,9 @@ const MovementsTable = () => {
       <View style={styles.CourseNumContainer}>
         <Text style={styles.textHead}>เวลา</Text>
       </View>
-
+      <View style={styles.CourseNumContainer}>
+        <Text style={styles.textHead}>ห้องสอบ</Text>
+      </View>
     </View>
   );
 };
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     padding: 12,
     marginVertical: 6,
     elevation: 0,
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     backgroundColor: "#7D5846",
     borderRadius: 4,
     minWidth: 80,

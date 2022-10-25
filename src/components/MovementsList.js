@@ -41,6 +41,9 @@ const MovementsList = ({ data }) => {
               <View style={styles.CourseNumContainer}>
                 <Text style={styles.Times}>{item.Times}</Text>
               </View>
+              <View style={styles.CourseNumContainer}>
+                <Text style={styles.Times}>{item.NumClass}</Text>
+              </View>
             </View>
           </TouchableOpacity>
         );
@@ -56,7 +59,7 @@ const styles = StyleSheet.create({
     padding: 12,
     marginVertical: 6,
     elevation: 2,
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     borderRadius: 16,
     shadowColor: "#BB8D76",
     shadowRadius: 4,

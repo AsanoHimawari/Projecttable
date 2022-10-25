@@ -15,40 +15,48 @@ const detailScreens = ({ route, navigation }) => {
   //   const navigation = useNavigation();
   return (
     <View style={styles.Container}>
-      <TouchableOpacity onPress={() => navigation.navigate("Manage", { movId: data.id })}>
-        <Text style={styles.header} ><FontAwesome name="edit" size={20} color="#fff" />  เเก้ไขรายละเอียดการสอบ </Text>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Manage", { movId: data.id })}
+      >
+        <Text style={styles.header}>
+          <FontAwesome name="edit" size={20} color="#fff" />{" "}
+          เเก้ไขรายละเอียดการสอบ{" "}
+        </Text>
       </TouchableOpacity>
-      
 
       <View style={styles.movement}>
         <View style={styles.CourseNumContainer}>
+          <View style={styles.detail}>
+            <Text style={styles.CourseNum1}>รหัสวิชาสอบ : </Text>
+            <Text style={styles.CourseNum}> {data.CourseNum}</Text>
+          </View>
 
-        <View style={styles.detail}>
-          <Text style={styles.CourseNum1}>รหัสวิชาสอบ  :  </Text>
-          <Text style={styles.CourseNum}> {data.CourseNum}</Text>
-        </View>
+          <View style={styles.detail}>
+            <Text style={styles.CourseNum1}>ชื่อวิชา : </Text>
+            <Text style={styles.CourseNum}>{data.Subject}</Text>
+          </View>
 
-        <View style={styles.detail}>
-          <Text style={styles.CourseNum1}>ชื่อวิชา  :  </Text>
-          <Text style={styles.CourseNum}>{data.Subject}</Text>
-        </View>
+          <View style={styles.detail}>
+            <Text style={styles.CourseNum1}>เวลาที่สอบ : </Text>
+            <Text style={styles.CourseNum}>{data.Times}</Text>
+          </View>
 
-        <View style={styles.detail}>
-          <Text style={styles.CourseNum1}>เวลาที่สอบ  :  </Text>
-          <Text style={styles.CourseNum}>{data.Times}</Text>
-        </View>
+          <View style={styles.detail}>
+            <Text style={styles.CourseNum1}>เลขห้องสอบ : </Text>
 
-        <View style={styles.detail}>
-          <Text style={styles.CourseNum1}>รายละเอียด  :  </Text>
-          
-          <View style={styles.detail2}>
-            <Text style={styles.CourseNum}>{data.description}</Text>
+            <View style={styles.detail2}>
+              <Text style={styles.CourseNum}>{data.NumClass}</Text>
+            </View>
+          </View>
+          <View style={styles.detail}>
+            <Text style={styles.CourseNum1}>รายละเอียด : </Text>
+
+            <View style={styles.detail2}>
+              <Text style={styles.CourseNum}>{data.description}</Text>
+            </View>
           </View>
         </View>
-
-        </View>
       </View>
-      
     </View>
   );
 };
@@ -61,13 +69,13 @@ const styles = StyleSheet.create({
     elevation: 0,
     justifyContent: "space-between",
     backgroundColor: "#BB8D76",
-    color:"#fff",
+    color: "#fff",
     borderRadius: 4,
     minWidth: 80,
     shadowOffset: { width: 1, height: 1 },
-    fontSize:20,
+    fontSize: 20,
     fontWeight: "400",
-    textDecorationLine: "underline"
+    textDecorationLine: "underline",
     // flexDirection: "row-reverse",
   },
   movement: {
@@ -113,19 +121,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "400",
     color: "#7D5846",
-    
-
   },
-  detail:{
-    flexDirection : "row",
-    justifyContent : "flex-start",
+  detail: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
     padding: 8,
   },
-  detail2:{
-    flexDirection:"column",
-
-  }
- 
+  detail2: {
+    flexDirection: "column",
+  },
 });
 
 export default detailScreens;

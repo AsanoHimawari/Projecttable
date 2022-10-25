@@ -26,6 +26,7 @@ export async function fetchMoveMents() {
         Subject: response.data[key].Subject,
         Times: response.data[key].Times,
         description: response.data[key].description,
+        NumClass: response.data[key].NumClass,
       };
       movements.push(movementobj);
     }

@@ -29,6 +29,10 @@ const MovementForm = ({
       value: defaultValues ? defaultValues.Times : "",
       isValid: true,
     },
+    NumClass: {
+      value: defaultValues ? defaultValues.NumClass : "",
+      isValid: true,
+    },
     description: {
       value: defaultValues ? defaultValues.description : "",
       isValid: true,
@@ -50,6 +54,7 @@ const MovementForm = ({
       date: new Date(input.date.value),
       Subject: input.Subject.value,
       Times: input.Times.value,
+      NumClass: input.NumClass.value,
       description: input.description.value,
     };
 
@@ -66,6 +71,11 @@ const MovementForm = ({
 
     const TimesIsValid = tableData?.Times?.trim().length > 0;
 
+    const NumClassIsValid =
+      !isNaN(tableData.NumClass) &&
+      tableData.NumClass > 0 &&
+      tableData.NumClass.length < 4;
+
     const descriptionIsValid = tableData?.Times?.trim().length > 0;
 
     if (
@@ -73,7 +83,8 @@ const MovementForm = ({
       !dateIsValid ||
       !SubjectIsValid ||
       !TimesIsValid ||
-      !descriptionIsValid
+      !descriptionIsValid ||
+      !NumClassIsValid
     ) {
       // Alert.alert("Invalid Input", "Please correct your input values");
       setInput((curInputs) => {
@@ -86,6 +97,10 @@ const MovementForm = ({
           Subject: {
             value: curInputs.Subject.value,
             isValid: SubjectIsValid,
+          },
+          NumClass: {
+            value: curInputs.NumClass.value,
+            isValid: NumClassIsValid,
           },
           Times: {
             value: curInputs.Times.value,
@@ -108,7 +123,8 @@ const MovementForm = ({
     !input.date.isValid ||
     !input.Subject.isValid ||
     !input.Times.isValid ||
-    !input.description.isValid;
+    !input.description.isValid ||
+    !input.NumClass.isValid;
 
   return (
     <View style={styles.form}>
@@ -153,6 +169,18 @@ const MovementForm = ({
         <Input
           style={styles.rowInput}
           label="เวลาที่สอบ"
+          invalid={!input.NumClass.isValid}
+          textInputConfig={{
+            keyboardType: "decimal-pad",
+            placeholder: "000",
+            // value: input.CourseNum.value,
+            onChangeText: inputChangeHandler.bind(this, "NumClass"),
+            value: input.NumClass.value,
+          }}
+        />
+        <Input
+          style={styles.rowInput}
+          label="เลขที่ห้องสอบ"
           invalid={!input.Times.isValid}
           textInputConfig={{
             keyboardType: "decimal-pad",

@@ -3,8 +3,18 @@ import { createContext, useReducer } from "react";
 export const MovementsContext = createContext({
   movements: [],
   setMovement: (movements) => {},
-  addMovement: ({ Subject, CourseNum, date, Times, description }) => {},
-  updateMovement: (id, { Subject, CourseNum, date, Times, description }) => {},
+  addMovement: ({
+    Subject,
+    CourseNum,
+    date,
+    Times,
+    NumClass,
+    description,
+  }) => {},
+  updateMovement: (
+    id,
+    { Subject, CourseNum, date, Times, NumClass, description }
+  ) => {},
   deleteMovement: (id) => {},
 });
 
