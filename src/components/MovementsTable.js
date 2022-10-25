@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     minWidth: 80,
     shadowOffset: { width: 1, height: 1 },
+    fontSize: 20,
   },
   CourseNumContainer: {
     paddingHorizontal: 12,

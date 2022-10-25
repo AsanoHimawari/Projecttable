@@ -3,7 +3,7 @@ import { React, useEffect, useState } from "react";
 import MovementsOutput from "../components/MovementsOutput";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { MovementsContext } from "../store/movements-context";
-import { AntDesign } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 
 const detailScreens = ({ route, navigation }) => {
   const [data, setData] = useState({});
@@ -11,52 +11,64 @@ const detailScreens = ({ route, navigation }) => {
     setData(route.params.item);
   }, []);
 
-  const MovementsCtx = useContext(MovementsContext);
+  // const MovementsCtx = useContext(MovementsContext);
   //   const navigation = useNavigation();
   return (
     <View style={styles.Container}>
-      <Text style={styles.header}>รายละเอียดการสอบ</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Manage", { movId: data.id })}>
+        <Text style={styles.header} ><FontAwesome name="edit" size={20} color="#fff" />  เเก้ไขรายละเอียดการสอบ </Text>
+      </TouchableOpacity>
+      
+
       <View style={styles.movement}>
         <View style={styles.CourseNumContainer}>
-          <Text style={styles.CourseNum1}>รหัสวิชาสอบ</Text>
-          <Text style={styles.CourseNum}>{data.CourseNum}</Text>
+
+        <View style={styles.detail}>
+          <Text style={styles.CourseNum1}>รหัสวิชาสอบ  :  </Text>
+          <Text style={styles.CourseNum}> {data.CourseNum}</Text>
         </View>
-      </View>
-      <View style={styles.movement}>
-        <View style={styles.CourseNumContainer}>
-          <Text style={styles.CourseNum1}>ชื่อวิชา</Text>
+
+        <View style={styles.detail}>
+          <Text style={styles.CourseNum1}>ชื่อวิชา  :  </Text>
           <Text style={styles.CourseNum}>{data.Subject}</Text>
         </View>
-      </View>
-      <View style={styles.movement}>
-        <View style={styles.CourseNumContainer}>
-          <Text style={styles.CourseNum1}>เวลาที่สอบ</Text>
+
+        <View style={styles.detail}>
+          <Text style={styles.CourseNum1}>เวลาที่สอบ  :  </Text>
           <Text style={styles.CourseNum}>{data.Times}</Text>
         </View>
-      </View>
-      <View style={styles.movement}>
-        <View style={styles.CourseNumContainer}>
-          <Text style={styles.CourseNum1}>รายละเอียด</Text>
-          <Text style={styles.CourseNum}>{data.description}</Text>
+
+        <View style={styles.detail}>
+          <Text style={styles.CourseNum1}>รายละเอียด  :  </Text>
+          
+          <View style={styles.detail2}>
+            <Text style={styles.CourseNum}>{data.description}</Text>
+          </View>
+        </View>
+
         </View>
       </View>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Manage", { movId: data.id })}
-      >
-        <AntDesign name="setting" size={24} color="black" />
-      </TouchableOpacity>
+      
     </View>
   );
 };
 const styles = StyleSheet.create({
   Container: { padding: 10 },
   header: {
+    flexDirection: "row",
+    padding: 16,
     marginVertical: 6,
+    elevation: 0,
+    justifyContent: "space-between",
     backgroundColor: "#BB8D76",
-    color: "#fff",
-    fontSize: 20,
-    padding: 12,
-    borderRadius: 16,
+    color:"#fff",
+    borderRadius: 4,
+    minWidth: 80,
+    shadowOffset: { width: 1, height: 1 },
+    fontSize:20,
+    fontWeight: "400",
+    textDecorationLine: "underline"
+    // flexDirection: "row-reverse",
   },
   movement: {
     flexDirection: "row",
@@ -74,7 +86,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   CourseNumContainer: {
-    backgroundColor: "#DECDC5",
     paddingHorizontal: 12,
     paddingVertical: 4,
     alignItems: "center",
@@ -89,8 +100,8 @@ const styles = StyleSheet.create({
     // borderBottomEndRadius: "#7D5846",
   },
   CourseNum1: {
-    fontSize: 20,
-    fontWeight: "400",
+    fontSize: 18,
+    fontWeight: "700",
     color: "#7D5846",
   },
   CourseNum: {
@@ -98,6 +109,23 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#7D5846",
   },
+  CourseNum1: {
+    fontSize: 18,
+    fontWeight: "400",
+    color: "#7D5846",
+    
+
+  },
+  detail:{
+    flexDirection : "row",
+    justifyContent : "flex-start",
+    padding: 8,
+  },
+  detail2:{
+    flexDirection:"column",
+
+  }
+ 
 });
 
 export default detailScreens;
