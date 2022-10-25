@@ -1,13 +1,13 @@
 import { React } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from '@expo/vector-icons';
 
 const IconButton = ({ name, size, color, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.buttonContainer}>
-        <Ionicons name={name} size={size} color={color} />
+      <AntDesign name="pluscircleo" size={size} color={color} />
       </View>
     </TouchableOpacity>
   );

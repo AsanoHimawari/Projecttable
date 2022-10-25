@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { AntDesign } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import IconButton from "./src/components/Ui/IconButton";
 
@@ -12,6 +12,7 @@ import AllMovements from "./src/screens/AllMovements";
 import RecentMovements from "./src/screens/RecentMovements";
 import ManageMovement from "./src/screens/ManageMovement";
 import Home from "./src/screens/Home";
+import detailScreens from "./src/screens/detailScreens";
 
 import MovementsContextProvider from "./src/store/movements-context";
 
@@ -42,7 +43,7 @@ const MovementsOverview = () => {
         name="Home"
         component={Home}
         options={{
-          title: "Home",
+          title: "วิชาสอบพรุ่งนี้",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home" size={size} color={color} />
           ),
@@ -52,7 +53,7 @@ const MovementsOverview = () => {
         name="Recent"
         component={RecentMovements}
         options={{
-          title: "This week Tables",
+          title: "วิชาที่สอบสัปดาห์นี้",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="hourglass" size={size} color={color} />
           ),
@@ -62,9 +63,9 @@ const MovementsOverview = () => {
         name="All"
         component={AllMovements}
         options={{
-          title: "All Tables",
+          title: "วิชาสอบทั้งหมด",
           tabBarIcon: ({ color, size }) => (
-            <AntDesign name="calendar" size={size} color={color} />
+            <FontAwesome5 name="clipboard-list" size={size} color={color} />
           ),
         }}
       />
@@ -91,6 +92,7 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <Stack.Screen name="Manage" component={ManageMovement} />
+            <Stack.Screen name="detailScreens" component={detailScreens} />
           </Stack.Navigator>
         </NavigationContainer>
       </MovementsContextProvider>

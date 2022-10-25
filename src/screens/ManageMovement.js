@@ -17,7 +17,7 @@ const ManageMovement = ({ route, navigation }) => {
   const movId = route.params?.movId;
   const isEditting = !!movId;
 
-  const selectedMovement = movementsCtx.movements.find(
+  const selectedMovement = movementsCtx?.movements?.find(
     (mov) => mov.id == movId
   );
   console.log(selectedMovement);
@@ -57,7 +57,7 @@ const ManageMovement = ({ route, navigation }) => {
       <MovementForm
         onSubmit={confirmHandler}
         onCancel={cancelHandler}
-        submitButtonLabel={isEditting ? "Update" : "Add"}
+        submitButtonLabel={isEditting ? "อัปเดต" : "เพิ่ม"}
         defaultValues={selectedMovement}
       />
       {isEditting && (

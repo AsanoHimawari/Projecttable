@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Alert } from "react-native";
+import { View, Text, StyleSheet, Alert, ScrollView } from "react-native";
 import Input from "./Input";
 import Button from "../Ui/Button";
 import { getFormatDate } from "../../utility/date";
@@ -25,6 +25,14 @@ const MovementForm = ({
       value: defaultValues ? defaultValues.Subject : "",
       isValid: true,
     },
+    Times: {
+      value: defaultValues ? defaultValues.Times : "",
+      isValid: true,
+    },
+    description: {
+      value: defaultValues ? defaultValues.description : "",
+      isValid: true,
+    },
   });
 
   const inputChangeHandler = (inputIdentifier, enterValue) => {
@@ -41,18 +49,32 @@ const MovementForm = ({
       CourseNum: input.CourseNum.value,
       date: new Date(input.date.value),
       Subject: input.Subject.value,
+      Times: input.Times.value,
+      description: input.description.value,
     };
 
     console.log(tableData);
 
     // console.log(isNaN(tableData.CourseNum));
     const CourseNumIsValid =
-      !isNaN(tableData.CourseNum) && tableData.CourseNum > 0;
+      !isNaN(tableData.CourseNum) &&
+      tableData.CourseNum > 0 &&
+      tableData.CourseNum.length < 9;
     const dateIsValid = tableData.date.toString() !== "Invalid Date";
 
     const SubjectIsValid = tableData.Subject.trim().length > 0;
 
-    if (!CourseNumIsValid || !dateIsValid || !SubjectIsValid) {
+    const TimesIsValid = tableData?.Times?.trim().length > 0;
+
+    const descriptionIsValid = tableData?.Times?.trim().length > 0;
+
+    if (
+      !CourseNumIsValid ||
+      !dateIsValid ||
+      !SubjectIsValid ||
+      !TimesIsValid ||
+      !descriptionIsValid
+    ) {
       // Alert.alert("Invalid Input", "Please correct your input values");
       setInput((curInputs) => {
         return {
@@ -65,6 +87,14 @@ const MovementForm = ({
             value: curInputs.Subject.value,
             isValid: SubjectIsValid,
           },
+          Times: {
+            value: curInputs.Times.value,
+            isValid: TimesIsValid,
+          },
+          description: {
+            value: curInputs.description.value,
+            isValid: descriptionIsValid,
+          },
         };
       });
       return;
@@ -74,71 +104,103 @@ const MovementForm = ({
   };
 
   const formIsInValid =
-    !input.CourseNum.isValid || !input.date.isValid || !input.Subject.isValid;
+    !input.CourseNum.isValid ||
+    !input.date.isValid ||
+    !input.Subject.isValid ||
+    !input.Times.isValid ||
+    !input.description.isValid;
 
   return (
     <View style={styles.form}>
-      <Text style={styles.title}>ตารางสอบ</Text>
-      <View style={styles.inputRow}>
+      <ScrollView style={styles.scrollView}>
+        <Text style={styles.title}>ตารางสอบ</Text>
+        <View style={styles.inputRow}>
+          <Input
+            style={styles.rowInput}
+            label="รหัสวิชา"
+            invalid={!input.CourseNum.isValid}
+            textInputConfig={{
+              keyboardType: "decimal-pad",
+              placeholder: "รหัสวิชา",
+              onChangeText: inputChangeHandler.bind(this, "CourseNum"),
+              value: input.CourseNum.value,
+            }}
+          />
+          <Input
+            style={styles.rowInput}
+            label="วันที่"
+            invalid={!input.date.isValid}
+            textInputConfig={{
+              keyboardType: "decimal-pad",
+              placeholder: "YYYY-MM-DD",
+              maxLength: 10,
+              onChangeText: inputChangeHandler.bind(this, "date"),
+              value: input.date.value,
+            }}
+          />
+        </View>
         <Input
           style={styles.rowInput}
-          label="Course Number"
-          invalid={!input.CourseNum.isValid}
+          label="วิชา"
+          invalid={!input.Subject.isValid}
           textInputConfig={{
-            keyboardType: "decimal-pad",
-            onChangeText: inputChangeHandler.bind(this, "CourseNum"),
-            value: input.CourseNum.value,
+            placeholder: "รายวิชา",
+            // value: input.CourseNum.value,
+            onChangeText: inputChangeHandler.bind(this, "Subject"),
+            value: input.Subject.value,
           }}
         />
         <Input
           style={styles.rowInput}
-          label="Date"
-          invalid={!input.date.isValid}
+          label="เวลาที่สอบ"
+          invalid={!input.Times.isValid}
           textInputConfig={{
             keyboardType: "decimal-pad",
-            placeholder: "YYYY-MM-DD",
-            maxLength: 10,
-            onChangeText: inputChangeHandler.bind(this, "date"),
-            value: input.date.value,
+            placeholder: "00.00",
+            // value: input.CourseNum.value,
+            onChangeText: inputChangeHandler.bind(this, "Times"),
+            value: input.Times.value,
           }}
         />
-      </View>
-      <Input
-        label="Subject"
-        invalid={!input.Subject.isValid}
-        textInputConfig={{
-          multiline: true,
-          value: input.CourseNum.value,
-          onChangeText: inputChangeHandler.bind(this, "Subject"),
-          value: input.Subject.value,
-        }}
-      />
-      {formIsInValid && (
-        <Text style={styles.errorText}>
-          Invalid input values : please check your entered Data!
-        </Text>
-      )}
-      <View style={styles.buttons}>
-        <Button style={styles.button} mode="flat" onPress={onCancel}>
-          Cancel
-        </Button>
-        <Button style={styles.button} onPress={submitHandler}>
-          {submitButtonLabel}
-        </Button>
-      </View>
+        <Input
+          style={styles.rowInput}
+          label="รายละเอียด"
+          invalid={!input.description.isValid}
+          textInputConfig={{
+            // keyboardType: "decimal-pad",
+            placeholder: "",
+            // value: input.CourseNum.value,
+            onChangeText: inputChangeHandler.bind(this, "description"),
+            value: input.description.value,
+          }}
+        />
+        {formIsInValid && (
+          <Text style={styles.errorText}>
+            กรุณาใส่ข้อมูลให้ถูกต้อง : โปรดเช็คข้อมูลของคุณที่กรอก
+          </Text>
+        )}
+        <View style={styles.buttons}>
+          <Button style={styles.button} mode="flat" onPress={onCancel}>
+            ยกเลิก
+          </Button>
+          <Button style={styles.button} onPress={submitHandler}>
+            {submitButtonLabel}
+          </Button>
+        </View>
+      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   form: {
-    marginTop: 5,
+    marginTop: 0,
   },
   title: {
-    fontSize: 30,
-    fontWeight: "bold",
+    fontSize: 26,
+    fontWeight: "600",
     color: "#7D5846",
-    marginVertical: 24,
+    marginVertical: 16,
     textAlign: "center",
   },
   inputRow: {
